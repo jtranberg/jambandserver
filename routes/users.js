@@ -40,4 +40,15 @@ router.put('/:username', async (req, res) => {
   }
 });
 
+// Get all users (public band profiles)
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 export default router;
